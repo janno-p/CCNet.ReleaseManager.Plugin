@@ -1,0 +1,16 @@
+<!-- ReleaseManagerDashboard.vm: Start -->
+<table>
+    <thead>
+        <tr>
+            <th>Thing</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Bla</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+<!-- ReleaseManagerDashboard.vm: End -->

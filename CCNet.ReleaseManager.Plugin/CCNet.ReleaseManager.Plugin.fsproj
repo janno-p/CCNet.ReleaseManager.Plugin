@@ -51,8 +51,12 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="HelloWorldAction.fs" />
+    <Compile Include="ReleaseManagerDashboardAction.fs" />
     <Compile Include="ReleaseManagerPlugin.fs" />
     <Content Include="packages.config" />
+    <None Include="Templates\ReleaseManagerDashboard.vm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
