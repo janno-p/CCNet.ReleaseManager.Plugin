@@ -1,16 +1,48 @@
 <!-- ReleaseManagerDashboard.vm: Start -->
-<table>
+
+<h3>Release Manager</h3>
+<ul>
+<li><a href="#">Create New Release</a></li>
+<li><a href="#">Configuration</a></li>
+</ul>
+
+<h4>Release History</h4>
+
+<table border="1">
     <thead>
         <tr>
-            <th>Thing</th>
-            <th>Description</th>
+            <th>Release</th>
+            <th>Author</th>
+            <th>Notes</th>
+            <th>Configuration Changes</th>
+            <th>Database Changes</th>
+            <th>Build Results</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Bla</td>
-            <td>-</td>
+            <td>
+                <p>
+                    <strong>2.2.4.0</strong><br />
+                    2015-01-09 11:12:13
+                </p>
+            </td>
+            <td>
+                John Smith
+            </td>
+            <td>&nbsp;</td>
+            <td>
+                Web.config<br />
+                SupportingApplication/App.config<br />
+            </td>
+            <td>
+                201501091118_FUTU_150.sql<br />
+                201501091118_FUTU_151.sql<br />
+                201501091118_FUTU_152.sql<br />
+            </td>
+            <td>Pending&hellip;</td>
         </tr>
     </tbody>
 </table>
+
 <!-- ReleaseManagerDashboard.vm: End -->
