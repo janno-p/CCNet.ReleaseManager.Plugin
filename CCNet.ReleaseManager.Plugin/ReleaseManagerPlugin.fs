@@ -9,5 +9,5 @@ type ReleaseManagerPlugin (actionInstantiator: IActionInstantiator) =
     interface IPlugin with
         override val LinkDescription = "Release Manager" with get
         override val NamedActions = [|
-                ImmutableNamedAction(ReleaseManagerDashboardAction.ActionName, dashboardAction) :> INamedAction
+                ImmutableNamedActionWithoutSiteTemplate(ReleaseManagerDashboardAction.ActionName, dashboardAction) :> INamedAction
             |] with get

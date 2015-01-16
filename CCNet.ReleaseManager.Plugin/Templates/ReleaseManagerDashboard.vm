@@ -1,10 +1,30 @@
 <!-- ReleaseManagerDashboard.vm: Start -->
 
-<h3>Release Manager</h3>
+<h2>Release Manager</h2>
+
+#foreach ($project in $projects)
+<div class="rm-project">
+<h3>$project.Name</h3>
+<table>
+    <tbody>
+        <tr>
+            <td><strong>Latest Version:</strong></td>
+            <td>2.2.3</td>
+        <tr>
+        <tr>
+            <td><strong>Date:</strong></td>
+            <td>2015-01-09 11:12:13</td>
+        </tr>
+    </tbody>
+</table
 <ul>
-<li><a href="#">Create New Release</a></li>
-<li><a href="#">Configuration</a></li>
+    <li><a href="#">New Release&hellip;</a></li>
+    <li><a href="#">Configuration&hellip;</a></li>
+    <li><a href="#">Release history&hellip;</a></li>
 </ul>
+</div>
+#end
+
 
 <h4>Release History</h4>
 
