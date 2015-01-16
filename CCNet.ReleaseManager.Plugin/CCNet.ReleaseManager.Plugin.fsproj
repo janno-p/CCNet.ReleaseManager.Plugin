@@ -57,6 +57,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Templates\ReleaseManagerSiteTemplate.vm" />
+    <None Include="Templates\ReleaseManagerProjectSettings.vm" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

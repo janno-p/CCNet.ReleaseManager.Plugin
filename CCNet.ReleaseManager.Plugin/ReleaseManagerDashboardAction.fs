@@ -10,6 +10,11 @@ open ThoughtWorks.CruiseControl.WebDashboard.MVC.View
 type ProjectDetails () =
     member val Name = "" with get, set
     member val Id = "" with get, set
+    member val WorkingDir = "" with get, set
+    member val BranchDir = "" with get, set
+    member val TagDir = "" with get, set
+    member val MajorVersionNumber = 0us with get, set
+    member val MinorVersionNumber = 0us with get, set
 
 type ReleaseManagerDashboardAction (viewGenerator: IVelocityViewGenerator) =
     let configPath = DashboardConfigurationLoader.CalculateDashboardConfigPath()
@@ -42,7 +47,7 @@ type ReleaseManagerDashboardAction (viewGenerator: IVelocityViewGenerator) =
             let doc = loadConfig()
             let node = doc.SelectSingleNode(@"/dashboard/plugins/farmPlugins/ReleaseManagerPlugin")
 
-            velocityContext.["projects"] <-
+            let projects =
                 match node |> getChildElements "Projects" with
                 | [ projects ] ->
                     projects
@@ -56,6 +61,35 @@ type ReleaseManagerDashboardAction (viewGenerator: IVelocityViewGenerator) =
                         acc.Add(details)
                         acc) (List<_>())
                 | _ -> (List<_>())
+            velocityContext.["projects"] <- projects
+
+            let parseUShort str =
+                match System.UInt16.TryParse str with
+                | true, value -> value
+                | _ -> 0us
+
+            match cruiseRequest.Request.GetText("Project") with
+            | null | "" -> ()
+            | pid ->
+                match projects |> Seq.tryFind (fun x -> x.Id = pid) with
+                | Some p ->
+                    let pNode = doc.SelectSingleNode(sprintf @"/dashboard/plugins/farmPlugins/ReleaseManagerPlugin/Projects/Project[@id='%s']" pid)
+                    for cNode in pNode.ChildNodes do
+                        if cNode.NodeType = XmlNodeType.Element then
+                            match cNode.LocalName with
+                            | "WorkingDir" -> p.WorkingDir <- cNode.Value
+                            | "BranchDir" -> p.BranchDir <- cNode.Value
+                            | "TagDir" -> p.TagDir <- cNode.Value
+                            | "MajorVersionNumber" -> p.MajorVersionNumber <- parseUShort cNode.Value
+                            | "MinorVersionNumber" -> p.MinorVersionNumber <- parseUShort cNode.Value
+                            | _ -> ()
+                    let localContext = Hashtable()
+                    localContext.["activeProject"] <- p
+                    let mainContent = viewGenerator.GenerateView("ReleaseManagerProjectSettings.vm", localContext)
+
+                    velocityContext.["activeProject"] <- p
+                    velocityContext.["mainContent"] <- mainContent.ResponseFragment
+                | _ -> ()
 
             //upcast viewGenerator.GenerateView("ReleaseManagerDashboard.vm", velocityContext)
             upcast viewGenerator.GenerateView("ReleaseManagerSiteTemplate.vm", velocityContext)
