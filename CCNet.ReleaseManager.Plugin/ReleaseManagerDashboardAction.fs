@@ -9,6 +9,7 @@ open ThoughtWorks.CruiseControl.WebDashboard.MVC.View
 
 type ProjectDetails () =
     member val Name = "" with get, set
+    member val Id = "" with get, set
 
 type ReleaseManagerDashboardAction (viewGenerator: IVelocityViewGenerator) =
     let configPath = DashboardConfigurationLoader.CalculateDashboardConfigPath()
@@ -47,9 +48,12 @@ type ReleaseManagerDashboardAction (viewGenerator: IVelocityViewGenerator) =
                     projects
                     |> getChildElements "Project"
                     |> List.fold (fun (acc: List<_>) project ->
+                        let projectId = project |> getAttribute "id"
+                        let details = ProjectDetails(Id=projectId.Value)
                         let projectName = project |> getAttribute "name"
                         if projectName.IsSome then
-                            acc.Add(ProjectDetails(Name=projectName.Value))
+                            details.Name <- projectName.Value
+                        acc.Add(details)
                         acc) (List<_>())
                 | _ -> (List<_>())
 
