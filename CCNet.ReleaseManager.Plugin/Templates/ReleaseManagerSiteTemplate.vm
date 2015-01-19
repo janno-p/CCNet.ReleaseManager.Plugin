@@ -48,12 +48,11 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li#if (!$activeProject) class="active"#end><a href="?">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="?">Configuration</a></li>
           </ul>
           <h3 class="sub-header"><small>Projects</small></h3>
           <ul class="nav nav-sidebar">
             #foreach ($project in $projects)
-            <li#if ($activeProject.Id == $project.Id) class="active"#end><a href="?Project=$project.Id">$project.Name</a></li>
+            <li#if ($activeProject.Id == $project.Id) class="active"#end><a href="?Project=$project.Id">$project.Name <span class="badge">2.2.3.0</span></a></li>
             #end
           </ul>
         </div>

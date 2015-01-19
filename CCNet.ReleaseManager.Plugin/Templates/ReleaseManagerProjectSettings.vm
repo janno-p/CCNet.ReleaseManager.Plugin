@@ -1,1 +1,51 @@
-﻿<h1 class="page-header">$activeProject.Name</h1>
+﻿<h1 class="page-header">$activeProject.Name <a href="#" class="btn btn-success pull-right" role="button"><span class="fa fa-upload"></span> New release &hellip;</a></h1>
+
+<div class="panel panel-success">
+  <div class="panel-heading"><strong>Release 2.2.3</strong></div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Version</dt>
+      <dd>2.2.3.0</dd>
+      <dt>Author</dt>
+      <dd>john.smith</dd>
+      <dt>Build time</dt>
+      <dd>16.01.2015 17:33:01</dd>
+      <dt>SVN branch</dt>
+      <dd><a href="http://svn.company.com/project/ReleaseManager/branches/2015/2.2.3">http://svn.company.com/project/ReleaseManager/branches/2015/2.2.3</a></dd>
+      <dt>SVN revision</dt>
+      <dd>114108</dd>
+    </dl>
+  </div>
+  <div class="panel-footer">
+    <a href="#" class="btn btn-default" role="button"><span class="fa fa-fire"></span> Release hotfix</a>
+    <a href="#" class="btn btn-default" role="button"><span class="fa fa-check-square-o"></span> Mark complete</a>
+  </div>
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-heading"><strong>Release 2.2.2</strong></div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Version</dt>
+      <dd>2.2.2.14</dd>
+      <dt>Author</dt>
+      <dd>john.smith</dd>
+      <dt>Build time</dt>
+      <dd>18.01.2015 12:44:58</dd>
+      <dt>SVN branch</dt>
+      <dd><a href="http://svn.company.com/project/ReleaseManager/branches/2014/2.2.2">http://svn.company.com/project/ReleaseManager/branches/2014/2.2.2</a></dd>
+      <dt>SVN revision</dt>
+      <dd>114777</dd>
+    </dl>
+  </div>
+  <div class="panel-footer">
+    <a href="#" class="btn btn-default" role="button"><span class="fa fa-fire"></span> Release hotfix</a>
+    <a href="#" class="btn btn-default" role="button"><span class="fa fa-check-square-o"></span> Mark complete</a>
+  </div>
+</div>
+
+<nav>
+  <ul class="pager">
+    <li class="previous"><a href="#">View release history &hellip;</a></li>
+  </ul>
+</nav>
